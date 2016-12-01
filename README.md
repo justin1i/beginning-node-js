@@ -4,6 +4,7 @@
   2. Events and Streams	
   3. HTTP
   4. Express
+  
   5. Persisting Data
   6. Simplifying Callbacks
   7. Testing
@@ -56,7 +57,7 @@
   npm ls
   ```
 
-## Streams
+# Streams
 
   * Readable stream
     process.stdin
@@ -70,8 +71,16 @@
   * Transform stream
     encryption and compression streams
 
+# HTTP
 
+# Express
 
+  # body-parser
+  # cookie-parser
+  # cookie-session
+  # express-session (better)
+  # compression
+  # connect-timeout
 
 
 

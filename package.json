@@ -18,6 +18,12 @@
   },
   "homepage": "https://github.com/justin1i/beginning-node-js#readme",
   "dependencies": {
+    "body-parser": "^1.15.2",
+    "compression": "^1.6.2",
+    "connect-timeout": "^1.8.0",
+    "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-alpha.2",
+    "express": "^4.14.0",
     "request": "^2.79.0"
   }
 }
