@@ -4,6 +4,7 @@ var cookieParser = require('cookie-parser');
 var cookieSession = require('cookie-session');
 var compression = require('compression');
 var timeout = require('connect-timeout');
+var contentDisposition = require('content-disposition'); 
 
 function haltOnTimedout (req, res, next) {
   if (!req.timedout) next();
@@ -90,6 +91,19 @@ express()
   
   // compression
   .use(compression())
+  
+  // serve all files as downloads
+  .use(
+    express.static(
+      __dirname + '/public/ftp',
+      {
+        'index': false,
+        'setHeaders': function (res, path) {
+          res.set('Content-Disposition', contentDisposition(path));
+        }
+      }
+    )
+  )
 
   // static
   .use(express.static(__dirname + '/public'))

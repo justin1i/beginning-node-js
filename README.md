@@ -1,53 +1,52 @@
-# Beginning Node.js
+#Beginning Node.js
 
-  1. Core Node.js
-  2. Events and Streams	
-  3. HTTP
-  4. Express
-  
-  5. Persisting Data
-  6. Simplifying Callbacks
-  7. Testing
-  8. Deployment and Scalability
+  1.Core Node.js
+  2.Events and Streams	
+  3.HTTP
+  4.Express
+  5.Persisting Data
+  6.Simplifying Callbacks
+  7.Testing
+  8.Deployment and Scalability
 
-# Core Node.js
+#Core Node.js
 
-## File-Based Module System
+##File-Based Module System
 
-  ** CommonJS module specification **
+  `CommonJS module specification`
 
-  * Each file is its own module
-  * Each file has access to the current module definition using the module variable
-  * The export of the current module is determited by the module.exports variable
-  * To import a module, to use the globally avaiable require function
+  *Each file is its own module
+  *Each file has access to the current module definition using the module variable
+  *The export of the current module is determited by the module.exports variable
+  *To import a module, to use the globally avaiable require function
 
-## Important Globals
+##Important Globals
 
-  * __dirname 
-  * __filename
-  * process.argv
-  * process.nextTick(callback)
-  * Buffer
+  *__dirname 
+  *__filename
+  *process.argv
+  *process.nextTick(callback)
+  *Buffer
 
-## Core Modules
+##Core Modules
 
-  * path
-    - path.normalize(str)
-    - path.join([str1], [str2], ...)
-    - path.dirname()
-    - path.basename()
-    - path.extname()
+  *path
+    -path.normalize(str)
+    -path.join([str1], [str2], ...)
+    -path.dirname()
+    -path.basename()
+    -path.extname()
 
-  * fs
-    - fs.writeFileSync(path, text)
-    - fs.readFileSync(path)
-    - fs.unlinkSync(path)
+  *fs
+    -fs.writeFileSync(path, text)
+    -fs.readFileSync(path)
+    -fs.unlinkSync(path)
 
-  * os
-    - os.totalmem()
-    - os.freemem()
+  *os
+    -os.totalmem()
+    -os.freemem()
 
-## npm
+##npm
   
   ```
   npm init
@@ -57,57 +56,119 @@
   npm ls
   ```
 
-# Streams
+#Streams
 
-  * Readable stream
+  *Readable stream
     process.stdin
 
-  * Writable stream
+  *Writable stream
     process.stdout
 
-  * Duplex stream
+  *Duplex stream
     socket
 
-  * Transform stream
+  *Transform stream
     encryption and compression streams
 
-# HTTP
+#HTTP
 
-# Express
+#Express
 
-  # body-parser
-  # cookie-parser
-  # cookie-session
-  # express-session (better)
-  # compression
-  # connect-timeout
+  *body-parser
+  *cookie-parser
+  *cookie-session
+  *express-session (better)
+  *compression
+  *connect-timeout
 
+##Express Response Object
 
+```
+res.set({
+  'Content-Type': 'text/plain',
+  'Content-Length': '123',
+  'ETag': '12345'
+});
+```
 
+```
+res.get('content-type'); // case-insensitive
+```
 
+```
+res.redirect('http://example.com');
+res.redirect('/login');
+res.redirect('../bar');
+res.redirect(301, 'http://example.com');
+```
 
+```
+res.send(404, 'These are not the droids you are looking for');
+res.send({ some: 'jso'}); // content-type: application/json
+```
 
+##Express Request Object
 
+```
+req.get('content-type');
+req.is('json');
+req.ip
+req.secure
+```
 
+`URL Handling`
 
+```
+// GET /shoes?order=desc&shoe[color]=blue&shoe[type]=converse
+req.query.order
+req.query.shoe.color
+req.query.shoe.type
+```
 
+```
+// GET /users?sort=desc
+req.path
+```
+## REST
 
+`collection` & `item`
+*GET
+*PUT
+*POST
+*DELETE
 
+##Express Application Routes
 
+*app.all()
+*app.get()
+*app.post()
+*app.put()
+*app.delete()
+*app.route()
 
+```
+app.get('/user/:userId', function(req, res){
+  res.end(`userId is: ${req.params['userId']}`)
+});
+```
 
+##Express Router Object
 
+#Persisting Data
 
+##NoSQL
 
+  * document database - MongoDB
+  * key-value database - Redis
 
+# Important MongoDB Concepts
 
+database -> collections -> documents
 
+*mongodb
+*mongoose
 
-
-
-
-
-
+#Simplifying Callbacks
 
 
 
