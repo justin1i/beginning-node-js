@@ -6,8 +6,6 @@
   4. Express
   5. Persisting Data
   6. Simplifying Callbacks
-  7. Testing
-  8. Deployment and Scalability
 
 #Core Node.js
 
@@ -170,5 +168,57 @@ database -> collections -> documents
 
 #Simplifying Callbacks
 
+`if/else in an async world`
+
+```
+function alwaysAsync(arg, cb) {
+  if(arg) {
+    process.nextTick(function(){
+      cb('cached data');
+    });
+  } else {
+    setTimeout(function(){
+      cb('loaded data');
+    }, 500);
+  }
+}
+```
+
+`loops in an async world`
+
+* async
+
+`error handling`
+
+* try/catch
+* promise
+  - Q style
+
+##Promise
+
+PENDING -> SETTLED ( FULFILLED / REJECTED )
+
+```
+var Q = require('q');
+
+var willFulfillDeferred = Q.defer();
+var willFulfill = willFulfillDeferred.promise;
+willFulfillDeferred.resolve('final value');
+
+willFulfill
+  .then(function(val){
+    console.log('success with', val); 
+  })
+  .catch(funciton(reason){
+    console.log('failed with', reason);
+  });
+
+// then always async! 
+Q.when(null).then(function(val){
+  console.log(val === null); //true
+});
+
+var readFileAsync = Q.nbind(fs.readFile);
+```
 
 
